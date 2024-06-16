@@ -4,6 +4,14 @@ import { expect } from '@playwright/test';
 
 
 test.describe('New Todo', () => {
+
+    test.beforeEach (async ({ pageManagerAPI}) => {
+        await cleanGroups({pageManagerAPI});
+    })
+
+    test.afterEach (async ({ pageManagerAPI}) => {
+        await cleanGroups({pageManagerAPI});
+    })
  
 
 test('Click files button. Create new document odt format. After this activities, new file odt format was created. ', async ({page, pageManager}) => {
@@ -34,9 +42,11 @@ test('1232', async ({page, pageManager}) => {
 
 test('Create group', async ({page, pageManager, pageManagerAPI}) => {
     await page.locator('[data-name="message-circle"]').click();
-    await pageManagerAPI.createFilesAPI.createGroup('TESTGROUP');
-    await pageManagerAPI.createFilesAPI.kickFromGroup();
+    const abc = await pageManagerAPI.createFilesAPI.createGroup('ASAP');
+    await pageManagerAPI.createFilesAPI.kickFromGroup(abc);
+    await expect(page.getByText('ASAP').first()).toBeVisible();
 })
+
 test('Kick group', async ({page, pageManager, pageManagerAPI}) => {
     await page.locator('[data-name="message-circle"]').click();
     await page.getByTestId('avatar').first().click();
@@ -45,5 +55,9 @@ test('Kick group', async ({page, pageManager, pageManagerAPI}) => {
     await pageManagerAPI.createFilesAPI.leaveFromGroup();
 })
 
+async function cleanGroups({pageManagerAPI}) {
+    const bca = await pageManagerAPI.createFilesAPI.getIdFromAllGroups();
+    await Promise.all (bca.map(async (item) => {return await pageManagerAPI.createFilesAPI.deleteGroup(item); }))
+}
 
 })
