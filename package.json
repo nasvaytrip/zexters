@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {"test:mail": "jest --config jest.config.js mail.spec.ts"},
   "keywords": [],
   "author": "",
   "license": "ISC",
