@@ -25,7 +25,7 @@ test('Create new doc. Delete creating doc. Doc has been deleted.', async ({page,
     await pageManagerAPI.createFilesAPI.createDocument('proverka12');    
 })
 
-test('1232', async ({page, pageManager}) => {
+test('Create new document', async ({page, pageManager}) => {
     await page.locator('[data-testid="icon: DriveOutline"]').click();
     await pageManager.files.Buttons.NEWDropDownButton.click();
     await pageManager.files.Buttons.newDocumentButton.hover();
