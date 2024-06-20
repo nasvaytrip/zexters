@@ -18,15 +18,11 @@ test('Click files button. Create new document odt format. After this activities,
     await pageManager.files.createNewDocumentOdtFormat({page});
     await expect(page.getByTestId('DisplayerHeader').getByText('1234')).toBeVisible();
     await pageManager.files.deleteDocumentOdtFormat();
-
 })
 
 test('Create new doc. Delete creating doc. Doc has been deleted.', async ({page, pageManager, pageManagerAPI}) => {
     await page.locator('[data-testid="icon: DriveOutline"]').click();
-    await pageManagerAPI.createFilesAPI.createDocument('proverka12');
-
-    
-    
+    await pageManagerAPI.createFilesAPI.createDocument('proverka12');    
 })
 
 test('1232', async ({page, pageManager}) => {
