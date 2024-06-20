@@ -15,7 +15,7 @@ export const test = base.extend<{pageManager: PageManager, pageManagerAPI : Page
     },
 
     page: async ({page}, use) => {
-    await page.goto('https://gb-auto-r-srv2.demo.zextras.io/static/login/');
+    await page.goto('https://gb-auto-u-srv2.demo.zextras.io/static/login/');
     await page.locator('[data-testid="username"]').click();
     await page.locator('[data-testid="username"]').type('test174')
     await page.locator('[data-testid="password"]').click();
